@@ -1,0 +1,16 @@
+server:
+  port: 8868
+  servlet:
+    context-path: /foreign
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/cloud_foreign
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+mybatis-plus:
+  type-aliases-package: com.xfc.foreign.entities
+  mapper-locations:classpath*: mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

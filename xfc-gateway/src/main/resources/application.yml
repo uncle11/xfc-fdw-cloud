@@ -1,0 +1,10 @@
+server:
+  port: 8888
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: foreign-table-server
+          uri: http://127.0.0.1:8868
+          predicates:
+            - Path=/foreign/**
