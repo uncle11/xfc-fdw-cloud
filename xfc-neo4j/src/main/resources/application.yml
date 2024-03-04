@@ -1,0 +1,11 @@
+spring:
+  neo4j:
+    uri: bolt://192.168.10.11:7687  # Neo4j服务器地址
+    database: xfc
+    authentication:
+      username: neo4j            # Neo4j用户名
+      password: 123456   # Neo4j密码
+server:
+  servlet:
+    context-path: /graph
+  port: 8888

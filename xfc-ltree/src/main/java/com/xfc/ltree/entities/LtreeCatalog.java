@@ -7,7 +7,7 @@ import java.util.Date;
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.xfc.common.config.LTreeTypeHandler;
+import com.xfc.ltree.config.LTreeTypeHandler;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;

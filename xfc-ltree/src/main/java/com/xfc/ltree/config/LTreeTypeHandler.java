@@ -1,4 +1,4 @@
-package com.xfc.common.config;
+package com.xfc.ltree.config;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
