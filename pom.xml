@@ -13,6 +13,7 @@
         <module>xfc-ltree</module>
         <module>xfc-common</module>
         <module>xfc-neo4j</module>
+        <module>xfc-gis</module>
     </modules>
     <packaging>pom</packaging>
     <parent>

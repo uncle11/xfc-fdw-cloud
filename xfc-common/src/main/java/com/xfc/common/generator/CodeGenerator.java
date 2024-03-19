@@ -24,12 +24,12 @@ public class CodeGenerator {
 
     // 生成的代码放到哪个工程中
 
-      private static String PROJECT_NAME="xfc-ltree";
+      private static String PROJECT_NAME="xfc-gis";
     // 数据库名称
-    private static String DATABASE_NAME = "xfc_ltree";
+    private static String DATABASE_NAME = "xfc_gis";
 
     // 子包名
-    private static String MODULE_NAME = "ltree";
+    private static String MODULE_NAME = "gis";
 
     public static void main(String[] args) {
         // 代码生成器
@@ -48,23 +48,28 @@ public class CodeGenerator {
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir") + "/";
         gc.setOutputDir(projectPath + PROJECT_NAME +"/src/main/java");
-        gc.setIdType(IdType.ASSIGN_ID); // 分布式id
-        gc.setAuthor("chenss");
-        gc.setFileOverride(false); //覆盖现有的
-        gc.setOpen(false); //是否生成后打开
+        // 分布式id
+        gc.setIdType(IdType.ASSIGN_ID);
+        gc.setAuthor("xfc");
+        //覆盖现有的
+        gc.setFileOverride(false);
+        //是否生成后打开
+        gc.setOpen(false);
         gc.setDateType(DateType.ONLY_DATE);
-        gc.setSwagger2(true); //实体属性 Swagger2 注解
+        //实体属性 Swagger2 注解
+        gc.setSwagger2(true);
         mpg.setGlobalConfig(gc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setParent("com.xfc"); //父包名
-        pc.setController(MODULE_NAME+".controller"); // com.mengxuegu.blog.aritcle.controller
+        //父包名
+        pc.setParent("com.xfc");
+        pc.setController(MODULE_NAME+".controller");
         pc.setService(MODULE_NAME+".service");
         pc.setServiceImpl(MODULE_NAME+".service.impl");
         pc.setMapper(MODULE_NAME+".mapper");
         pc.setXml(MODULE_NAME+".mapper.xml");
-        pc.setEntity(MODULE_NAME+".entities");//实体类存储包名 com.mengxuegu.blog.entities
+        pc.setEntity(MODULE_NAME+".entities");
         mpg.setPackageInfo(pc);
 
 
@@ -72,14 +77,17 @@ public class CodeGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        strategy.setEntityLombokModel(true); //使用lombok
-        strategy.setEntitySerialVersionUID(true);// 实体类的实现接口Serializable
-        strategy.setRestControllerStyle(true); // @RestController
+        //使用lombok
+        strategy.setEntityLombokModel(true);
+        // 实体类的实现接口Serializable
+        strategy.setEntitySerialVersionUID(true);
+        // @RestController
+        strategy.setRestControllerStyle(true);
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
-        strategy.setTablePrefix("workflow_"); // 去掉表前缀
+        // 去掉表前缀
+        strategy.setTablePrefix("workflow_");
         mpg.setStrategy(strategy);
-
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
     }
