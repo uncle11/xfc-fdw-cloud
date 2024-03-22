@@ -86,7 +86,7 @@ public class CodeGenerator {
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
         // 去掉表前缀
-        strategy.setTablePrefix("workflow_");
+//        strategy.setTablePrefix("workflow_");
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
