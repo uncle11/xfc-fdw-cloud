@@ -22,6 +22,14 @@ import java.util.List;
 public class LtreeCatalogController {
     @Autowired
     ILtreeCatalogService ltreeCatalogService;
+    @GetMapping("/expection")
+    public String testExpection(){
+        int xfc=1;
+        if(xfc==1){
+            throw new RuntimeException("异常测试");
+        }
+        return "hello xfc";
+    }
 
     @GetMapping("/search")
     public LtreeCatalogDTO getCatalogList() {

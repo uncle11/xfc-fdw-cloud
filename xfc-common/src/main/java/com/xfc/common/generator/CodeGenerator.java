@@ -26,7 +26,7 @@ public class CodeGenerator {
 
       private static String PROJECT_NAME="xfc-gis";
     // 数据库名称
-    private static String DATABASE_NAME = "xfc_gis";
+    private static String DATABASE_NAME = "product";
 
     // 子包名
     private static String MODULE_NAME = "gis";
@@ -36,12 +36,12 @@ public class CodeGenerator {
         AutoGenerator mpg = new AutoGenerator();
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-//        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/"+DATABASE_NAME+"?useUnicode=true&characterEncoding=utf8&useSSL=false");
-//        dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUrl("jdbc:postgresql://127.0.0.1:5432/"+DATABASE_NAME);
-        dsc.setDriverName("org.postgresql.Driver");
-        dsc.setUsername("postgres");
-        dsc.setPassword("postgres");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/"+DATABASE_NAME+"?useUnicode=true&characterEncoding=utf8&useSSL=false");
+        dsc.setDriverName("com.mysql.jdbc.Driver");
+//        dsc.setUrl("jdbc:postgresql://127.0.0.1:5432/"+DATABASE_NAME);
+//        dsc.setDriverName("org.postgresql.Driver");
+        dsc.setUsername("root");
+        dsc.setPassword("123456");
         mpg.setDataSource(dsc);
 
         // 全局配置
