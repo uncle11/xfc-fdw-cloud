@@ -24,24 +24,24 @@ public class CodeGenerator {
 
     // 生成的代码放到哪个工程中
 
-      private static String PROJECT_NAME="xfc-gis";
+      private static String PROJECT_NAME="xfc-mq-consumer";
     // 数据库名称
-    private static String DATABASE_NAME = "product";
+    private static String DATABASE_NAME = "xfc_mq_consumer";
 
     // 子包名
-    private static String MODULE_NAME = "gis";
+    private static String MODULE_NAME = "consumer";
 
     public static void main(String[] args) {
         // 代码生成器
         AutoGenerator mpg = new AutoGenerator();
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/"+DATABASE_NAME+"?useUnicode=true&characterEncoding=utf8&useSSL=false");
-        dsc.setDriverName("com.mysql.jdbc.Driver");
-//        dsc.setUrl("jdbc:postgresql://127.0.0.1:5432/"+DATABASE_NAME);
-//        dsc.setDriverName("org.postgresql.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("123456");
+//        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/"+DATABASE_NAME+"?useUnicode=true&characterEncoding=utf8&useSSL=false");
+//        dsc.setDriverName("com.mysql.jdbc.Driver");
+        dsc.setUrl("jdbc:postgresql://127.0.0.1:5432/"+DATABASE_NAME);
+        dsc.setDriverName("org.postgresql.Driver");
+        dsc.setUsername("postgres");
+        dsc.setPassword("postgres");
         mpg.setDataSource(dsc);
 
         // 全局配置
