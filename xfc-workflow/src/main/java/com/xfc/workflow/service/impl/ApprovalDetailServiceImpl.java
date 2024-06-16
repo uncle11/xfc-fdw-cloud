@@ -17,4 +17,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class ApprovalDetailServiceImpl extends ServiceImpl<ApprovalDetailMapper, ApprovalDetail> implements IApprovalDetailService {
 
+
 }

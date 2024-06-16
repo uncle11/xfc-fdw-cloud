@@ -13,4 +13,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IBusinessApprovalWorkflowDetailService extends IService<BusinessApprovalWorkflowDetail> {
 
+    BusinessApprovalWorkflowDetail findFirstNodeByWorkflowId(String workflowId);
+
+    BusinessApprovalWorkflowDetail getNextNodeByPreNode(BusinessApprovalWorkflowDetail firstNode);
 }

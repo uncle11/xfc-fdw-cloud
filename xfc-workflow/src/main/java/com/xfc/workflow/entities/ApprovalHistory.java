@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+
+import com.xfc.common.entities.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -22,7 +24,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @ApiModel(value="ApprovalHistory对象", description="")
-public class ApprovalHistory implements Serializable {
+public class ApprovalHistory extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -47,9 +49,6 @@ public class ApprovalHistory implements Serializable {
     @ApiModelProperty(value = "业务流程id")
     private Integer workflowId;
 
-    private Integer version;
-
-    private Integer isDeleted;
 
     @ApiModelProperty(value = "申请人电话")
     private String applicantPhone;
@@ -63,9 +62,6 @@ public class ApprovalHistory implements Serializable {
     @ApiModelProperty(value = "审批人username")
     private String approverUsername;
 
-    private Date createTime;
-
-    private Date updateTime;
 
 
 }

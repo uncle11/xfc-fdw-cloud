@@ -1,19 +1,13 @@
 package com.xfc.workflow.entities;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Set;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * <p>
@@ -27,7 +21,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @ApiModel(value="SysUser对象", description="用户信息表")
-public class SysUser implements UserDetails {
+public class SysUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -44,33 +38,5 @@ public class SysUser implements UserDetails {
     @ApiModelProperty(value = "昵称")
     private String nickName;
 
-    @TableField(exist = false) // 不是表中字段
-    @ApiModelProperty("封装用户权限")
-    private Set<GrantedAuthority> authorities;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
-    }
-
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 }

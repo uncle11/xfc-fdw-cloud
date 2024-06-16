@@ -1,5 +1,6 @@
 package com.xfc.workflow.service;
 
+import com.xfc.workflow.dto.RequestDTO;
 import com.xfc.workflow.entities.Request;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IRequestService extends IService<Request> {
 
+    Boolean addRequest(RequestDTO requestDTO);
 }

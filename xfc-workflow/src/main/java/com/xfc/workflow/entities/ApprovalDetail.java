@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+
+import com.xfc.common.entities.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -22,7 +24,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @ApiModel(value="ApprovalDetail对象", description="审批细节表")
-public class ApprovalDetail implements Serializable {
+public class ApprovalDetail extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -49,15 +51,8 @@ public class ApprovalDetail implements Serializable {
     private String remark;
 
     @ApiModelProperty(value = "业务流程id")
-    private Integer workflowId;
+    private String workflowId;
 
-    private Integer version;
-
-    private Integer isDeleted;
-
-    private Date createTime;
-
-    private Date updateTime;
 
 
 }

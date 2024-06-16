@@ -1,0 +1,15 @@
+server:
+  port: 8879
+  servlet:
+    context-path: /workflow
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/xfc_workflow
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+mybatis-plus:
+  type-aliases-package: com.xfc.workflow.entities
+  mapper-locations:classpath*: mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
