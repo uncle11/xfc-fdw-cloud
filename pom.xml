@@ -17,6 +17,8 @@
         <module>xfc-api</module>
         <module>xfc-mq-producer</module>
         <module>xfc-mq-consumer</module>
+        <module>xfc-tdt-sso-client</module>
+        <module>xfc-workflow</module>
     </modules>
     <packaging>pom</packaging>
     <parent>

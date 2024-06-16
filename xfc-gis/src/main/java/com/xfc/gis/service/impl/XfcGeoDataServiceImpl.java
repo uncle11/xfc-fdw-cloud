@@ -6,7 +6,6 @@ import com.xfc.gis.mapper.XfcGeoDataMapper;
 import com.xfc.gis.service.IXfcGeoDataService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xfc.gis.utils.GisUtil;
-import org.checkerframework.checker.units.qual.A;
 import org.geotools.data.FileDataStoreFinder;
 import org.geotools.data.shapefile.ShapefileDataStore;
 import org.geotools.data.simple.SimpleFeatureCollection;
