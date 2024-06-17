@@ -47,7 +47,7 @@ public class ApprovalHistory extends BaseEntity implements Serializable {
     private String remark;
 
     @ApiModelProperty(value = "业务流程id")
-    private Integer workflowId;
+    private String workflowId;
 
 
     @ApiModelProperty(value = "申请人电话")

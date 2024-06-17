@@ -1,7 +1,10 @@
 package com.xfc.workflow.service;
 
+import com.xfc.workflow.entities.ApprovalDetail;
 import com.xfc.workflow.entities.ApprovalHistory;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IApprovalHistoryService extends IService<ApprovalHistory> {
 
+    List<ApprovalHistory> getApprovedList();
 }

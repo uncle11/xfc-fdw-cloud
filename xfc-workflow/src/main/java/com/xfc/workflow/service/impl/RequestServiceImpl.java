@@ -55,6 +55,8 @@ public class RequestServiceImpl extends ServiceImpl<RequestMapper, Request> impl
             approvalDetail.setNextApproverUsername(nextNode.getNodeUsername());//设置下游节点的审批人用户名
             approvalDetail.setStatus("1"); // 设置初始状态为待审批
             approvalDetail.setWorkflowId(request.getWorkflowId());
+            approvalDetail.setNodeName(firstNode.getNodeName());
+            approvalDetail.setNextNodeName(nextNode.getNodeName());
 
             // 插入数据到 approval_detail 表
             approvalDetailService.save(approvalDetail);

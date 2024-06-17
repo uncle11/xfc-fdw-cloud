@@ -36,4 +36,13 @@ public class BusinessApprovalWorkflowDetailServiceImpl extends ServiceImpl<Busin
         BusinessApprovalWorkflowDetail nextNode = baseMapper.selectOne(nextNodeQueryWrapper);
         return nextNode;
     }
+
+    @Override
+    public BusinessApprovalWorkflowDetail findByWorkflowIdAndNodeName(String workflowId, String nodeName) {
+        LambdaQueryWrapper<BusinessApprovalWorkflowDetail> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(BusinessApprovalWorkflowDetail::getWorkflowId,workflowId)
+                .eq(BusinessApprovalWorkflowDetail::getNodeName,nodeName);
+        BusinessApprovalWorkflowDetail businessApprovalWorkflowDetail=baseMapper.selectOne(queryWrapper);
+        return businessApprovalWorkflowDetail;
+    }
 }

@@ -16,4 +16,6 @@ public interface IBusinessApprovalWorkflowDetailService extends IService<Busines
     BusinessApprovalWorkflowDetail findFirstNodeByWorkflowId(String workflowId);
 
     BusinessApprovalWorkflowDetail getNextNodeByPreNode(BusinessApprovalWorkflowDetail firstNode);
+
+    BusinessApprovalWorkflowDetail findByWorkflowIdAndNodeName(String workflowId, String nodeName);
 }

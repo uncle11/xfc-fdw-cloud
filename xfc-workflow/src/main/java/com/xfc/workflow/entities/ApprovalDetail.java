@@ -53,6 +53,10 @@ public class ApprovalDetail extends BaseEntity implements Serializable {
     @ApiModelProperty(value = "业务流程id")
     private String workflowId;
 
+    private String nodeName;
+
+    private String nextNodeName;
+
 
 
 }
