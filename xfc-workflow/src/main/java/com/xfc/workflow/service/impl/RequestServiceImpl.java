@@ -30,7 +30,7 @@ import java.util.Date;
 @Service
 public class RequestServiceImpl extends ServiceImpl<RequestMapper, Request> implements IRequestService {
     @Autowired
-    IBusinessApprovalWorkflowDetailService workflowDetailService;
+    IBusinessApprovalWorkflowDetailService workflowDetaiSlService;
     @Autowired
     IApprovalDetailService approvalDetailService;
     @Override

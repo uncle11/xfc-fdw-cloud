@@ -67,40 +67,41 @@ public class ApprovalDetailServiceImpl extends ServiceImpl<ApprovalDetailMapper,
         if (approvalDTO.getStatus().equals("2")) {
             // 根据 workflow_id 和 node_name 联查 business_approval_workflow_detail 表，获取当前流程是否为最后节点即 is_final=1
             BusinessApprovalWorkflowDetail currentWorkflowDetail = businessApprovalWorkflowDetailService.findByWorkflowIdAndNodeName(approvalDTO.getWorkflowId(), approvalDetail.getNodeName());
-
             if (currentWorkflowDetail != null && currentWorkflowDetail.getIsFinal().equals("1")) {
                 // 如果是最后节点，则删除该条数据，填充 approval_history 表，根据 request 表修改 request 数据的 status 为 2
                 baseMapper.deleteById(approvalDetail.getId()); // 删除当前审批记录
-                // 填充 approval_history 表
-                ApprovalHistory approvalHistory = new ApprovalHistory();
-                approvalHistory.setRequestId(request.getId());
-                approvalHistory.setApproverName(name); // 设置审批人姓名，或者从用户表中获取
-                approvalHistory.setApprovalTime(new Date());
-                approvalHistory.setStatus("2"); // 通过
-                approvalHistory.setRemark(approvalDTO.getRemark());
-                approvalHistory.setWorkflowId(approvalDTO.getWorkflowId());
-                approvalHistory.setApplicantPhone(request.getApplicantPhone());
-                approvalHistory.setPurpose(request.getPurpose());
-                approvalHistory.setApplicantName(request.getApplicantName());
-                approvalHistory.setApproverUsername(username); // 设置审批人用户名，或者从用户表中获取
-                approvalHistoryMapper.insert(approvalHistory); // 插入审批历史记录
-
                 // 更新 request 表中的状态为 2（通过）
-                    request.setStatus("2");
-                    requestMapper.updateById(request);
+                request.setStatus("2");
+                requestMapper.updateById(request);
 
             } else {
                 // 如果不是最后节点，则更新 business_approval_workflow_detail 为下一个节点审批信息
                 BusinessApprovalWorkflowDetail nextNode = businessApprovalWorkflowDetailService.getNextNodeByPreNode(currentWorkflowDetail);
 //                获取下一级节点的更下一级
-                BusinessApprovalWorkflowDetail nextNextNode=businessApprovalWorkflowDetailService.getNextNodeByPreNode(nextNode);
-                    // 更新当前 approval_detail 表中的审批人和下一个审批人信息
-                    approvalDetail.setApproverUsername(nextNode.getNodeUsername());
-                    approvalDetail.setNextApproverUsername(nextNextNode!=null?nextNextNode.getNodeUsername():null);
-                    approvalDetail.setApprovalTime(new Date());
-                    approvalDetail.setStatus("1"); // 设置为待审批状态
-                    baseMapper.updateById(approvalDetail);
+                BusinessApprovalWorkflowDetail nextNextNode= businessApprovalWorkflowDetailService.getNextNodeByPreNode(nextNode);
+                // 更新当前 approval_detail 表中的审批人和下一个审批人信息
+                approvalDetail.setApproverUsername(nextNode.getNodeUsername());
+                approvalDetail.setNodeName(nextNextNode.getNodeName());
+                approvalDetail.setNextApproverUsername(nextNextNode!=null?nextNextNode.getNodeUsername():"");
+                approvalDetail.setNextNodeName(nextNextNode!=null?nextNextNode.getNodeName():"");
+                approvalDetail.setApprovalTime(new Date());
+                approvalDetail.setStatus("1"); // 设置为待审批状态
+                baseMapper.updateById(approvalDetail);
+
             }
+            // 填充 approval_history 表
+            ApprovalHistory approvalHistory = new ApprovalHistory();
+            approvalHistory.setRequestId(request.getId());
+            approvalHistory.setApproverName(name); // 设置审批人姓名，或者从用户表中获取
+            approvalHistory.setApprovalTime(new Date());
+            approvalHistory.setStatus("2"); // 通过
+            approvalHistory.setRemark(approvalDTO.getRemark());
+            approvalHistory.setWorkflowId(approvalDTO.getWorkflowId());
+            approvalHistory.setApplicantPhone(request.getApplicantPhone());
+            approvalHistory.setPurpose(request.getPurpose());
+            approvalHistory.setApplicantName(request.getApplicantName());
+            approvalHistory.setApproverUsername(username); // 设置审批人用户名，或者从用户表中获取
+            approvalHistoryMapper.insert(approvalHistory); // 插入审批历史记录
         } else if (approvalDTO.getStatus().equals("3")) {
             // 审批驳回
             baseMapper.deleteById(approvalDetail.getId()); // 删除当前审批记录
