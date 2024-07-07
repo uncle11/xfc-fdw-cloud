@@ -4,6 +4,7 @@ package com.xfc.workflow.controller;
 import com.xfc.workflow.dto.ApprovalDTO;
 import com.xfc.workflow.entities.ApprovalDetail;
 import com.xfc.workflow.service.IApprovalDetailService;
+import com.xfc.workflow.service.strategy.ApprovalFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,9 @@ public class ApprovalDetailController {
     @Autowired
     IApprovalDetailService approvalDetailService;
 
+    @Autowired
+    ApprovalFactory approvalFactory;
+
     @GetMapping("/pending-approval")
     public List<ApprovalDetail> getPendingAppprovalList() {
         return approvalDetailService.getPendingAppprovalList();
@@ -31,7 +35,7 @@ public class ApprovalDetailController {
 
     @PostMapping("/approval")
     public Boolean approvalApplication(@Validated @RequestBody ApprovalDTO approvalDTO) {
-        return approvalDetailService.approvalApplication(approvalDTO);
+        return approvalFactory.approvalApplication(approvalDTO);
     }
 
 
