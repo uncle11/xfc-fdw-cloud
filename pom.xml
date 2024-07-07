@@ -19,6 +19,7 @@
         <module>xfc-mq-consumer</module>
         <module>xfc-tdt-sso-client</module>
         <module>xfc-workflow</module>
+        <module>xfc-dict</module>
     </modules>
     <packaging>pom</packaging>
     <parent>

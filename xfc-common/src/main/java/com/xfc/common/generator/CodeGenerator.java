@@ -24,12 +24,12 @@ public class CodeGenerator {
 
     // 生成的代码放到哪个工程中
 
-      private static String PROJECT_NAME="xfc-workflow";
+      private static String PROJECT_NAME="xfc-dict";
     // 数据库名称
-    private static String DATABASE_NAME = "xfc_workflow";
+    private static String DATABASE_NAME = "xfc_dict";
 
     // 子包名
-    private static String MODULE_NAME = "workflow";
+    private static String MODULE_NAME = "dict";
 
     public static void main(String[] args) {
         // 代码生成器
