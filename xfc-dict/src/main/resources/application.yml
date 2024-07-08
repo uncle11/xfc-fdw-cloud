@@ -1,0 +1,20 @@
+server:
+  port: 8881
+  servlet:
+    context-path: /dict
+spring:
+  mvc:
+    pathmatch:
+      # 该配置解决 Spring Boot 2.6.* 版本以上使用 Swagger 遇到的如下问题
+      # Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException
+      matching-strategy: ant_path_matcher
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/xfc_dict
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+mybatis-plus:
+  type-aliases-package: com.xfc.dict.entities
+  mapper-locations:classpath*: mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 字典类型表
+ * 
  * </p>
  *
  * @author xfc
@@ -23,28 +23,19 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="DictionaryType对象", description="字典类型表")
-public class DictionaryType extends BaseEntity implements Serializable {
+@ApiModel(value="Student对象", description="")
+public class Student extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "主键ID")
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     private String id;
 
-    @ApiModelProperty(value = "字典类型名称")
-    private String typeName;
+    private String name;
 
-    @ApiModelProperty(value = "字典类型描述")
-    private String typeDescription;
+    private String bloodType;
 
-    @ApiModelProperty(value = "父节点id")
-    private String parentId;
-
-
-    @ApiModelProperty(value = "字典类型标签")
-    private String typeLabel;
-
+    private String constellationType;
 
 
 

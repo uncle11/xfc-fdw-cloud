@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+
+import com.xfc.common.entities.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -22,11 +24,12 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @ApiModel(value="DictionaryValue对象", description="字典值表")
-public class DictionaryValue implements Serializable {
+public class DictionaryValue extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "主键ID")
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
     private String id;
 
     @ApiModelProperty(value = "字典值名称")
@@ -35,17 +38,6 @@ public class DictionaryValue implements Serializable {
     @ApiModelProperty(value = "字典类型id")
     private String typeId;
 
-    @ApiModelProperty(value = "创建人名字")
-    private String creatorId;
-
-    @ApiModelProperty(value = "创建时间")
-    private Date createTime;
-
-    @ApiModelProperty(value = "更新时间")
-    private Date updateTime;
-
-    @ApiModelProperty(value = "乐观锁")
-    private Integer version;
 
     @ApiModelProperty(value = "字典值标签")
     private String valueLabel;
@@ -53,15 +45,7 @@ public class DictionaryValue implements Serializable {
     @ApiModelProperty(value = "字典值排序")
     private Integer valueSort;
 
-    private Boolean isVisible;
 
-    private Boolean isDeleted;
-
-    private String creatorName;
-
-    private String updaterId;
-
-    private String updaterName;
 
 
 }
