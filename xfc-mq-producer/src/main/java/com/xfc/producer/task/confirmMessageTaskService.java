@@ -39,7 +39,7 @@ public class confirmMessageTaskService {
                 .stream()
                 .collect(Collectors.toList());
         noConfirmMessages.forEach((noConfirmMessage)->{
-            rabbitTemplate.convertAndSend("xz_push_exchange","", JsonUtil.obj2String(noConfirmMessage),
+            rabbitTemplate.convertAndSend("xfc_fanout_exchange","", JsonUtil.obj2String(noConfirmMessage),
                     new CorrelationData(noConfirmMessage.getId()));
         });
     }

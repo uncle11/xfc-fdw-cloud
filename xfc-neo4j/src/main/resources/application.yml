@@ -1,4 +1,9 @@
 spring:
+  mvc:
+    pathmatch:
+      # 该配置解决 Spring Boot 2.6.* 版本以上使用 Swagger 遇到的如下问题
+      # Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException
+      matching-strategy: ant_path_matcher
   neo4j:
     uri: bolt://192.168.10.11:7687  # Neo4j服务器地址
     database: xfc
